@@ -1,0 +1,80 @@
+.modal{
+    display: none;
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: rgba(0,0,0,0.7);
+
+    .modal-container{
+        width: 60%;
+        height: 400px;
+        margin: 0 auto;
+        background-color:white;
+        border-radius: 5px;
+    }
+
+    .modal-header{
+        height: 50px;
+        border-radius: 5px 5px 0 0;
+        background-color: $dark-grey;
+        color: white;
+        font-size: 20px;
+        display:flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 20px;
+
+        .modal-close{
+            width:20px;
+            height: 20px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+
+    .modal-body{
+        padding: 0 15px;
+
+    }
+    .body-row:nth-child(odd){
+        background-color:$product-background;
+    }
+
+    .body-header {
+        width: 100%;
+        display: flex;
+
+        p{
+            text-align: center;
+        }
+    }
+
+    .body-row {
+        display: flex;
+        align-items: center;
+        height: 30px;
+
+        div{
+            text-align: center;
+        }
+    }
+
+    .col-1{
+        width: 20%;
+    }
+    .col-2{
+        width: 10%;
+
+        i{
+            color: green;
+        }
+    }
+    .col-3{
+        width: 20%;
+    }
+}

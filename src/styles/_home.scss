@@ -1,0 +1,136 @@
+.container{
+    padding-top: 130px;
+    max-width: 1366px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.left{
+    width: 700px;
+    height: calc(100vh - 160px);
+    display: flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+
+    .rowOne{
+        display: flex;
+        justify-content:space-between;
+    }
+
+    .block{
+        width: 200px;
+        height:100px;
+        background-color:$navbar-color;
+        border-radius: 5px;
+    }
+
+    .balance{
+        color: $text-color;
+        padding:20px;
+        font-size:20px;
+    }
+
+    .orders, .upcomingOrders{
+        color: $text-color;
+        padding:10px;font-size:20px;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        text-align: center;
+    }
+
+    .orders, .upcomingOrders{
+        cursor: pointer;
+
+        &:hover{
+            background-color: $navbar-hover;
+        }
+    }
+
+    .banner{
+        width:100%;
+        height: 150px;
+        background-color:white;
+        border-radius: 5px;
+        overflow: hidden;
+        object-position: center;
+    }
+
+    .slider{
+        width:calc(100% - 25px - 25px);
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .slick-slide{
+        min-width: 150px;
+          max-width: 150px;
+          margin: 0 calc(50px / 8);
+      }
+}
+
+.right{
+    width: 400px;
+    height: calc(100vh - 160px);
+    display:flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+
+    .chart{
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        border-radius:5px;
+        padding:5px;
+    }
+
+    .favorites{
+        width:100%;
+        height: 350px;
+        max-height: 350px;
+        border-radius: 5px;
+
+        .favorites-header{
+            width: 100%;
+            height: 50px;
+            border-radius: 5px 5px 0 0;
+            background-color: $dark-grey;
+            color: $text-color;
+            padding: 0 25px;
+            display:flex;
+            align-items: center;
+        }
+        .favorites-body{
+            width: 100%;
+            //height: 100%;
+
+            ul{
+                width:100%;
+                //height: 100%;
+            }
+            .favorites-item{
+                width: 100%;
+                height: 30px;
+                background-color: $product-background;
+
+                &:nth-child(odd){
+                    background-color:#BDC3C7;
+                }
+            }
+        }
+
+        .favorites-footer{
+            width:100%;
+            height: 50px;
+            padding: 0 25px;
+            background-color: $dark-grey;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0 0 5px 5px;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+$background-color: #63778B;
+$dark-grey:#7F8C8D;
+
+$navbar-color: #16A085;
+$navbar-hover: #1ABC9C;
+$product-background:#ECF0F1;
+
+$button: #2980B9;
+$button-hover: #3498DB;
+
+$searchBar: #95A5A6;
+$text-color: white;
+$text-alt: #3D566E;
+
+$text20: 20px;
+$text14: 14px;
+$text12: 12px;
+
+
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;   
+}
+
+*, input, select, textarea, option, button {
+    outline: none!important;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style-type: none;
+}
+
+.button{
+    border: none;
+    background-color: $button;
+    color:$text-color;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size:$text12;
+    
+    &.wipe{
+        width:100px;
+        height: 30px;
+    }
+    
+    &.finish{
+        width:150px;
+        height: 30px;
+    }
+    
+    &:hover{
+        background-color: $button-hover;
+        cursor: pointer;
+    }
+}
+
+
+@import 'product';
+@import 'navbar';
+@import 'home';
+@import 'products';
+@import 'modal';
+@import 'signin';

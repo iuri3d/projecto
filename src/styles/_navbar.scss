@@ -1,0 +1,200 @@
+.navbar{
+    position:fixed;
+    background-color: $navbar-color;
+    width: 100vw;
+    height: 100px;
+}
+.content{
+    max-width: 1366px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 15px;
+    display:flex;
+}
+
+.links{
+    display:flex;
+    height: 100%;
+
+    .link{
+        width: 200px;
+        height: 100%;
+        color: white;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+
+        &:hover{
+            background-color:$navbar-hover;
+        }
+    }
+}
+
+.user{
+    width: 100%;
+    display:flex;
+    justify-content:flex-end;
+    position: relative;
+
+    .cart{
+        position: relative;
+        width: 100px;
+        height: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    
+        .icon{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            &:hover{
+                background-color:$navbar-hover;
+                cursor: pointer;
+            }
+        }
+    
+        svg{
+            font-size: 20px;
+        }
+    }
+    .cart-count{
+        position: absolute;
+        background-color:black;
+        font-size:9px;
+        width:15px;
+        height:15px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        top: 30px;
+        right: 30px;
+    }
+
+    .cart-body{
+        display:none;
+        width:360px;
+        border-radius: 5px;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        -webkit-box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+        box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+    
+        &.show{
+            display:block;
+        }
+    
+        .cart-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            width:100%;
+            height: 50px;
+            padding:0 15px;
+            border-radius: 5px 5px 0 0;
+            background-color: $dark-grey;
+        
+        
+            .close{
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+        .cart-footer{
+            width:360px;
+            height: 50px;
+            background-color:$dark-grey;
+            border-radius: 0 0 5px 5px;
+            display:flex;
+            align-items: center;
+            justify-content:space-between;
+            padding: 0 15px;
+        }
+
+        .cart-count{
+            position: absolute;
+            background-color:black;
+            font-size:9px;
+            width:15px;
+            height:15px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            top: 30px;
+            right: 30px;
+        }
+    }
+
+    .profile{
+        display: flex;
+        align-items: center;
+    
+        &:hover{
+            background-color: $navbar-hover;
+            cursor: pointer;
+        }
+
+        .profile-name{
+            color: white;
+            padding: 0 25px;
+        
+        }
+        
+        .profile-image{
+            width: 60px;
+            height: 60px;
+            border-radius:50%;
+            background-color:grey;
+            margin: 0 10px;
+        }
+    }
+
+    .user-settings{
+        display:none;
+        width: 120px;
+        height: 100px;
+        border-radius: 5px;
+        background-color: $navbar-color;
+        position: absolute;
+        top: 110px;
+        right: 0;
+        -webkit-box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+        box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.75);
+
+        &.show{
+            display:block;
+        }
+
+        .profile-settings, .logout{
+            width:100%;
+            height: 50%;
+            display:flex;
+            align-items:center;
+            justify-content:space-evenly;
+            color: $text-color;
+            padding: 15px;
+
+            &:hover {
+                background-color: $navbar-hover;
+                cursor: pointer;
+            }
+
+            svg{
+                width:16px;
+                height: 100%;
+            }
+        }
+    }
+}

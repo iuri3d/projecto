@@ -1,6 +1,8 @@
 <?php 
     require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
+    
+
     $pdf = new FPDF('p', 'cm', 'A4');
 
     $pdf->AddPage();

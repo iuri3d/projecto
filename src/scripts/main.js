@@ -44,13 +44,18 @@ $(document).ready(function(){
             url: '/api/product/read.php',
             success: function(result){
                 for(var i = 0 ; i < result.records.length ; i++){
-                    generateProduct(0, result.records[i].name, result.records[i].price, grid);
+                    generateProduct(1, result.records[i].name, result.records[i].price, grid);
                     console.log(result.records[i].name, result.records[i].price);
                 }
 
             }
         })
     });
+
+    ///Get orders reference for PDF
+    $('.icons').on('click', function(){
+        var reference = $(this).siblings('.ref').text();
+    })
 
     $('.pdf').on('click',function() {
         console.log('click');
@@ -160,16 +165,15 @@ function generateProduct(f, n, p, l){
     */
 
     $(l).append('<div class="product"></div>');
-    $('<div class="favorite"></div>').appendTo(this);
-
+    $('.product:last-child').append('<div class="favorite"></div>')
     if(f != 0){
-        $('.favorite').append('<i class="favorite-icon far fa-star"></i>');
+        $('.product:last-child .favorite').append('<i class="favorite-icon fas fa-star"></i>');
     }else{
-        $('.favorite').append('<i class="favorite-icon fas fa-star"></i>');
+        $('.product:last-child .favorite').append('<i class="favorite-icon far fa-star"></i>');
     }
-    $('<img class="image"/>').appendTo(this);
-    $('<div class="productName">' + n + '</div>').appendTo(this);
-    $('<div class="productPrice">' + p + '</div>').appendTo(this);
-    $('<button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>').appendTo(this);
-
+    $('.product:last-child')
+        .append('<img class="image"/>')
+        .append('<div class="productName">' + n + '</div>')
+        .append('<div class="productPrice">' + p + '</div>')
+        .append('<button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>');
 }

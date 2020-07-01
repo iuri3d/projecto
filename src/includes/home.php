@@ -13,10 +13,10 @@
                                     <p class="col-1">Data</p>
                                     <p class="col-2">Estado</p>
                                     <p class="col-3">Valor</p>
-                                    <div class="icons"></div>
+                                    <div class="icons">Facturas</div>
                                 </div>
                                 <div class="body-row">
-                                    <div class="col-1">#48722</div>
+                                    <div class="col-1 ref">#48722</div>
                                     <div class="col-1">14-05-2020</div>
                                     <div class="col-2"><i class="fas fa-check-circle"></i></div>
                                     <div class="col-3">125.35€</div>
@@ -24,7 +24,7 @@
 
                                 </div>
                                 <div class="body-row">
-                                    <div class="col-1">#48722</div>
+                                    <div class="col-1 ref">#48723</div>
                                     <div class="col-1">14-05-2020</div>
                                     <div class="col-2"><i class="fas fa-check-circle"></i></div>
                                     <div class="col-3">125.35€</div>
@@ -32,7 +32,7 @@
 
                                 </div>
                                 <div class="body-row">
-                                    <div class="col-1">#48722</div>
+                                    <div class="col-1 ref">#48724</div>
                                     <div class="col-1">14-05-2020</div>
                                     <div class="col-2"><i class="fas fa-check-circle"></i></div>
                                     <div class="col-3">125.35€</div>
@@ -61,7 +61,7 @@
                 <div class="upcomingOrders block">Encomendas Agendadas</div>
             </div>
             <div class="rowTwo">
-                <div class="banner"><img src="" alt=""></div>
+                <div class="banner"><img src="https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-banner-gradient-background-background-image_63194.jpg" alt=""></div>
             </div>
             <div class="rowThree">
                 <div class="slider" id="slider">

@@ -56,7 +56,12 @@
         background-color:white;
         border-radius: 5px;
         overflow: hidden;
-        object-position: center;
+        display: flex;
+        align-items: center;
+
+        img{
+            width:100%;
+        }
     }
 
     .slider{

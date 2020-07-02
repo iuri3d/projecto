@@ -28,7 +28,7 @@ const paths = {
       dest: "dist/"
     },
     vendor: {
-      src: "src/vendor/**/*.*",
+      src: "vendor/**/*.*",
       dest: "dist/vendor/"
     }
 };
@@ -106,7 +106,7 @@ function watcher() {
     gulp.watch(paths.templates.src, templates);
 }
 
-const build = gulp.series(styles, templates, scripts);
+const build = gulp.series(styles, templates, scripts, vendor);
 const watch = gulp.parallel(watcher, connect);
 
 exports.images = images;

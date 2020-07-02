@@ -26,6 +26,11 @@ $(document).ready(function(){
         $('.modal').css('display','none');
     });
 
+    ///Open create product modal
+    $('.create-product').on('click',function(){
+        $('.modal').css('display','block');
+    })
+
     //Show Profile Options
     $('.profile').on('click',function(){showProfile()});
 
@@ -38,24 +43,25 @@ $(document).ready(function(){
     });
 
     /* AJAX TEST DATA */
-    $('.testajax').on('click', function(){
-        $.ajax({
-            type: 'GET',
-            url: '/api/product/read.php',
-            success: function(result){
-                for(var i = 0 ; i < result.records.length ; i++){
-                    generateProduct(1, result.records[i].name, result.records[i].price, grid);
-                    console.log(result.records[i].name, result.records[i].price);
-                }
-
+    //$('.testajax').on('click', function(){
+    $.ajax({
+        type: 'GET',
+        url: '/api/product/read.php',
+        success: function(result){
+            for(var i = 0 ; i < result.records.length ; i++){
+                generateProduct(1, result.records[i].name, result.records[i].price, grid);
             }
-        })
+        }
     });
+    //});
 
     ///Get orders reference for PDF
-    $('.icons').on('click', function(){
+    $('.icons').on('click', function(e){
         var reference = $(this).siblings('.ref').text();
-    })
+        //e.preventDefault();
+        console.log(reference);
+        //window.open(invoice.php, '_blank');
+    });
 
     $('.pdf').on('click',function() {
         console.log('click');
@@ -97,8 +103,7 @@ $(document).ready(function(){
             e.preventDefault();
         });
     
-    });
-    
+    });    
 });
 
 

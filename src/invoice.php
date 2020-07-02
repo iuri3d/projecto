@@ -658,6 +658,7 @@ function temporaire( $texte )
 
 }
 
+//UTF-8 decode
 
 $pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
 $pdf->AddPage();

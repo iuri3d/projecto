@@ -178,7 +178,7 @@
             display:block;
         }
 
-        .profile-settings, .logout{
+        .profile-settings a, .logout a{
             width:100%;
             height: 50%;
             display:flex;
@@ -186,6 +186,7 @@
             justify-content:space-evenly;
             color: $text-color;
             padding: 15px;
+            text-decoration: none;
 
             &:hover {
                 background-color: $navbar-hover;

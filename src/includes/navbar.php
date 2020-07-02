@@ -25,12 +25,12 @@
             </div>
             
             <div class="profile">
-                <div class="profile-name">José Manuel</div>
+                <div class="profile-name"> <?php echo$_SESSION['name'] ?></div>
                 <div class="profile-image"></div>
             </div>
             <div class="user-settings">
                 <div class="profile-settings"><i class="fas fa-user"></i>Perfil</div>
-                <div class="logout"><i class="fas fa-sign-out-alt"></i>Sair</div>
+                <div class="logout"><a href="../auth/signout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>
             </div>
         </div>
     </div>

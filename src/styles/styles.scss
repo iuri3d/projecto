@@ -72,6 +72,13 @@ li{
     }
 }
 
+a{
+    &:visited{
+        color: white;
+        text-decoration: none;
+    }
+}
+
 
 @import 'product';
 @import 'navbar';
@@ -79,3 +86,4 @@ li{
 @import 'products';
 @import 'modal';
 @import 'signin';
+@import 'admin';

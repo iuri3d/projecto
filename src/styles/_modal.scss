@@ -10,7 +10,7 @@
 
     .modal-container{
         width: 60%;
-        height: 400px;
+        //height: 400px;
         margin: 0 auto;
         background-color:white;
         border-radius: 5px;
@@ -87,5 +87,28 @@
             cursor: pointer;
             color: $dark-grey;
         }
+    }
+}
+
+.form-create-product {
+    padding: 25px;
+    display:flex;
+    flex-direction: column;
+
+    input{
+        margin: 10px 0;
+        border: none;
+        border-bottom: 1px solid $dark-grey;
+    }
+
+    textarea{
+        border: 1px solid rgba(black, 0.1);
+        resize: none;
+    }
+
+    .create-button {
+        width: 200px;
+        height: 30px;
+        margin: 0 auto;
     }
 }

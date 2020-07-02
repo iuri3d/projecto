@@ -143,7 +143,5 @@
                 </div>
             </div>
         </div>
-
-        <button class="pdf">pdf</button>
     </div>
 </div>

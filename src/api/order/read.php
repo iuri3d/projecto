@@ -3,24 +3,24 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
   
 include_once '../config/database.php';
-include_once '../objects/product.php';
+include_once '../objects/order.php';
   
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
   
 // initialize object
-$product = new Product($db);
+$order = new Order($db);
   
-$stmt = $product->read();
+$stmt = $order->read();
 $num = $stmt->rowCount();
   
 // check if more than 0 record found
 if($num>0){
   
     // products array
-    $products_arr=array();
-    $products_arr["records"]=array();
+    $order_arr=array();
+    $order_arr["records"]=array();
   
     
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -29,25 +29,21 @@ if($num>0){
         // just $name only
         extract($row);
   
-        $product_item=array(
+        $order_item=array(
             "id" => $id,
             "ref" => $ref,
-            "name" => $name,
-            "price" => $price,
-            "stock" => $stock,
-            "highlight" => $highlight,
-            "category" => $category,
-            "description" => html_entity_decode($description)
+            "created_at" => $created_at,
+            "users_id" => $Users_id,
         );
   
-        array_push($products_arr["records"], $product_item);
+        array_push($order_arr["records"], $order_item);
     }
   
     // set response code - 200 OK
     http_response_code(200);
   
     // show products data in json format
-    echo json_encode($products_arr);
+    echo json_encode($order_arr);
 }
 else{
   
@@ -56,6 +52,6 @@ else{
   
     // tell the user no products found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No order found.")
     );
 }

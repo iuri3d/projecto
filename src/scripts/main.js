@@ -42,24 +42,24 @@ $(document).ready(function(){
         showCart();
     });
 
-    /* AJAX TEST DATA */
-    //$('.testajax').on('click', function(){
-    $.ajax({
+    ///Load products from API
+    var products_arr = $.parseJSON($.ajax({
         type: 'GET',
         url: '/api/product/read.php',
+        dataType: "json", 
+        async: false,
         success: function(result){
             for(var i = 0 ; i < result.records.length ; i++){
                 generateProduct(1, result.records[i].name, result.records[i].price, grid);
             }
         }
-    });
-    //});
+    }).responseText); // This will wait until you get a response from the ajax request.
+
 
     ///Get orders reference for PDF
     $('.icons').on('click', function(e){
         var reference = $(this).siblings('.ref').text();
-        //e.preventDefault();
-        console.log(reference);
+        e.preventDefault();
         //window.open(invoice.php, '_blank');
     });
 

@@ -1,21 +1,15 @@
 <?php
-class Product{
+class Order{
   
     // database connection and table name
     private $conn;
-    private $table_name = "products";
+    private $table_name = "orders";
   
     // object properties
-    public $id; //int
-    public $ref; //int
-    public $name; //varchar
-    public $price; //float
-    public $stock; //float
-    public $highlight; //int - bool true false
-    public $category; //varchar
-    public $description; //longtext
-
-  
+    public $id;
+    public $ref;
+    public $created_at;
+    public $Users_id;
     // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
@@ -43,29 +37,20 @@ class Product{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    ref=:ref, name=:name, price=:price, stock=:stock, highlight=:highlight, category =:category, description=:description";
+                    ref=:ref, created_at=:created_at, Users_id=:Users_id";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
     
         // sanitize
         $this->ref=htmlspecialchars(strip_tags($this->ref));
-        $this->name=htmlspecialchars(strip_tags($this->name));
-        $this->price=htmlspecialchars(strip_tags($this->price));
-        $this->stock=htmlspecialchars(strip_tags($this->stock));
-        $this->highlight=htmlspecialchars(strip_tags($this->highlight));
-        $this->category=htmlspecialchars(strip_tags($this->category));
-        $this->description=htmlspecialchars(strip_tags($this->description));
-
+        $this->created_at=htmlspecialchars(strip_tags($this->created_at));
+        $this->Users_id=htmlspecialchars(strip_tags($this->Users_id));
     
         // bind values
         $stmt->bindParam(":ref", $this->ref);
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":stock", $this->stock);
-        $stmt->bindParam(":highlight", $this->highlight);
-        $stmt->bindParam(":category", $this->category);
-        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":created_at", $this->created_at);
+        $stmt->bindParam(":Users_id", $this->Users_id);
     
         // execute query
         if($stmt->execute()){
@@ -83,13 +68,10 @@ class Product{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    ref     = :ref,
-                    name    = :name,
-                    price   = :price,
-                    stock   = :stock,
-                    highlight    : highlight,
-                    category    = :category,
-                    description = :description
+                    name = :name,
+                    price = :price,
+                    description = :description,
+                    category = :category
                 WHERE
                     id = :id";
     
@@ -97,23 +79,17 @@ class Product{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->ref=htmlspecialchars(strip_tags($this->ref));
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->price=htmlspecialchars(strip_tags($this->price));
-        $this->stock=htmlspecialchars(strip_tags($this->stock));
-        $this->highlight=htmlspecialchars(strip_tags($this->highlight));
-        $this->category=htmlspecialchars(strip_tags($this->category));
         $this->description=htmlspecialchars(strip_tags($this->description));
+        $this->category=htmlspecialchars(strip_tags($this->category));
         $this->id=htmlspecialchars(strip_tags($this->id));
     
         // bind new values
-        $stmt->bindParam(":ref", $this->ref);
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":stock", $this->stock);
-        $stmt->bindParam(":highlight", $this->highlight);
-        $stmt->bindParam(":category", $this->category);
-        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':price', $this->price);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':category', $this->category);
         $stmt->bindParam(':id', $this->id);
     
         // execute the query

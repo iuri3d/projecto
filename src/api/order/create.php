@@ -10,12 +10,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../config/database.php';
   
 // instantiate product object
-include_once '../objects/product.php';
+include_once '../objects/order.php';
   
 $database = new Database();
 $db = $database->getConnection();
   
-$product = new Product($db);
+$order = new Order($db);
   
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -23,22 +23,16 @@ $data = json_decode(file_get_contents("php://input"));
 // make sure data is not empty
 if(
     !empty($data->ref) &&
-    !empty($data->name) &&
-    !empty($data->price) &&
-    !empty($data->stock)
+    !empty($data->created_at) &&
+    !empty($data->Users_id)
 ){
-  
     // set product property values
-    $product->ref = $data->ref;
-    $product->name = $data->name;
-    $product->price = $data->price;
-    $product->stock = $data->stock;
-    $product->highlight = $data->highlight;
-    $product->category = $data->category;
-    $product->description = $data->description;
+    $order->ref         = $data->ref;
+    $order->created_at  = $data->created_at;
+    $order->Users_id    = $data->Users_id;
   
     // create the product
-    if($product->create()){
+    if($order->create()){
   
         // set response code - 201 created
         http_response_code(201);

@@ -3,6 +3,7 @@ require_once('../includes/functions.php');
 
 
 if (!empty($_POST)) {
+
     $password   = $_POST['password'];
     $email      = $_POST['email'];
 

@@ -20,11 +20,11 @@ require_once('../includes/functions.php');
                 $stmt = null;
                 echo "User signed up!";
 
-                $subject = 'ola';
-                $message = 'ola';
-                $output = 'verifique mail';
+                $subject = 'Verificação de conta';
+                $message = 'Clique no link para verificar a sua conta: <br><b><a href="localhost/auth/verify.php?token='.$token.'&email='.$email.'">Verificar Conta</a></b>';
+                $output = '<p>Um email de confirmação foi enviado para'.$email.'</p>';
 
-                //email($email, $subject, $message, $output);
+                email($email, $subject, $message, $output);
             }
         } else {
             echo "All fields are required";

@@ -65,55 +65,7 @@
             </div>
             <div class="rowThree">
                 <div class="slider" id="slider">
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                    <div class="product">
-                        <div class="favorite"><i class="favorite-icon far fa-star"></i></div>
-                        <div class="image"></div>
-                        <div class="productName">fsdfljdsflkj sdlkfj sd</div>
-                        <div class="productPrice">12,4€</div>
-                        <button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

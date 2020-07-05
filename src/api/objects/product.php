@@ -145,5 +145,18 @@ class Product{
     
         return false;
     }
+
+    function readFavorites($id){
+
+        $query = "SELECT products_id FROM favorites WHERE users_id = ".$id." ";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':id', $this->id);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
 ?>

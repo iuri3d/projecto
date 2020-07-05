@@ -1,9 +1,70 @@
 $(document).ready(function(){
 
+    let user_id = '1';
+    ///Load products from API
+    var products_arr = $.parseJSON($.ajax({
+        type: 'GET',
+        url: '/api/product/read.php',
+        dataType: "json", 
+        async: false,
+        success: function(){}
+    }).responseText); // This will wait until you get a response from the ajax request.
+
+    var insertFavorites = $.ajax({
+        type: 'GET',
+        url: '/api/product/readFavorites.php',
+        //data: user_id,
+        dataType: "json", 
+        async: false,
+        success: function(result){
+            for(var i=0; i < products_arr.records.length; i++){
+                for(var j=0; j < result.records.length; j++){
+                    if( products_arr.records[i].id == result.records[j].products_id ){
+                        products_arr.records[i]['favorite'] = '1';
+                        break;
+                    } else {
+                        products_arr.records[i]['favorite'] = '0';
+                    }
+                }
+            }
+        }
+    });
+
     ///Build Home chart
     if($('#myChart').length != 0){
         buildChart();
     }
+
+    ///Generate products on products_page
+    let grid_products = $('#grid');
+    if( grid_products != null && grid_products!= undefined ){
+        for(var i = 0 ; i < products_arr.records.length ; i++){
+            generateProduct(i+1, products_arr.records[i].favorite, products_arr.records[i].name, products_arr.records[i].price, grid_products);
+        }
+    }
+    
+    ////Generate slider chart
+    if($('#slider').length != 0){
+        checkHighlight(products_arr);
+    }
+    
+    
+
+    ////Toggle Favorites
+
+    $("#check_fav").on('change', function(){
+        if( $(this).is(':checked') ){
+            for(var i = 0 ; i < products_arr.records.length ; i++){
+                if( products_arr.records[i].favorite == 0){
+                    $('.product:nth-child('+ (i+1) +')').hide();
+                }
+            }
+        }
+        else{
+            $('.product').show();
+        }
+    });
+
 
     ///Start Home Slider
     $('#slider').slick({
@@ -41,20 +102,6 @@ $(document).ready(function(){
     $('#cart-close').on('click',function(){
         showCart();
     });
-
-    ///Load products from API
-    var products_arr = $.parseJSON($.ajax({
-        type: 'GET',
-        url: '/api/product/read.php',
-        dataType: "json", 
-        async: false,
-        success: function(result){
-            for(var i = 0 ; i < result.records.length ; i++){
-                generateProduct(1, result.records[i].name, result.records[i].price, grid);
-            }
-        }
-    }).responseText); // This will wait until you get a response from the ajax request.
-
 
     ///Get orders reference for PDF
     $('.icons').on('click', function(e){
@@ -161,8 +208,9 @@ function buildChart(){
 }
 
 //Generate Products
-function generateProduct(f, n, p, l){
+function generateProduct(i, f, n, p, l){
     /*
+    i = position
     f = favourite
     n = name
     p =  price
@@ -170,15 +218,23 @@ function generateProduct(f, n, p, l){
     */
 
     $(l).append('<div class="product"></div>');
-    $('.product:last-child').append('<div class="favorite"></div>')
+    $('.product:nth-child('+ i +')').append('<div class="favorite"></div>')
     if(f != 0){
-        $('.product:last-child .favorite').append('<i class="favorite-icon fas fa-star"></i>');
+        $('.product:nth-child('+ i +') .favorite').append('<i class="favorite-icon fas fa-star"></i>');
     }else{
-        $('.product:last-child .favorite').append('<i class="favorite-icon far fa-star"></i>');
+        $('.product:nth-child('+ i +') .favorite').append('<i class="favorite-icon far fa-star"></i>');
     }
-    $('.product:last-child')
+    $('.product:nth-child('+ i +')')
         .append('<img class="image"/>')
         .append('<div class="productName">' + n + '</div>')
         .append('<div class="productPrice">' + p + '</div>')
         .append('<button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>');
+}
+
+function checkHighlight(products_arr){
+    for(var i = 0; i < products_arr.records.length; i++){
+        if(products_arr.records[i].highlight == 1){
+            generateProduct(i+1, 1, products_arr.records[i].name, products_arr.records[i].price, '#slider')
+        }
+    }
 }

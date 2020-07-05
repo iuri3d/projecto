@@ -8,7 +8,7 @@ if (!empty($_POST)) {
     $email      = $_POST['email'];
 
     if (!empty($password) && !empty($email)) {
-        $sql = "SELECT name, email, password, token, level FROM users WHERE email = ? AND level >= ? LIMIT 1";
+        $sql = "SELECT id, name, email, password, token, level FROM users WHERE email = ? AND level >= ? LIMIT 1";
 
         $stmt = conn()->prepare($sql);
         if ($stmt->execute([$email, 0])) {
@@ -25,7 +25,7 @@ if (!empty($_POST)) {
                 //session_regenerate_id();
 
                 $_SESSION['loggedin'] = true;
-
+                $_SESSION['id'] = $r['id'];
                 $_SESSION['name'] = $r['name'];
                 $_SESSION['email'] = $r['email'];
                 $_SESSION['token'] = $r['token'];

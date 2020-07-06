@@ -119,6 +119,10 @@
             align-items: center;
             justify-content:space-between;
             padding: 0 15px;
+
+            .button + .finish{
+                width: 150px;
+            }
         }
 
         .cart-count{

@@ -21,7 +21,7 @@ require_once('../includes/functions.php');
                 echo "User signed up!";
 
                 $subject = 'Verificação de conta';
-                $message = 'Clique no link para verificar a sua conta: <br><b><a href="localhost/auth/verify.php?token='.$token.'&email='.$email.'">Verificar Conta</a></b>';
+                $message = 'Clique no link para verificar a sua conta: <br><b><a href="http://localhost/auth/verify.php?token='.$token.'&email='.$email.'">Verificar Conta</a></b>';
                 $output = '<p>Um email de confirmação foi enviado para'.$email.'</p>';
 
                 email($email, $subject, $message, $output);

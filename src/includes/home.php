@@ -78,18 +78,11 @@
             <div class="rowFive">
                 <div class="favorites">
                     <div class="favorites-header">Favoritos</div>
-                    <div class="favorites-body">
-                        <ul>
-                            <li class="favorites-item"></li>
-                            <li class="favorites-item"></li>
-                            <li class="favorites-item"></li>
-                            <li class="favorites-item"></li>
-                            <li class="favorites-item"></li>
-                            <li class="favorites-item"></li>
+                        <ul class="favorites-body">
+                            
                         </ul>
-                    </div>
                     <div class="favorites-footer">
-                        <button class="button wipe">Limpar</button>
+                        <!--<button class="button wipe">Limpar</button>-->
                         <button class="button wipe">Adicionar<i class="fas fa-shopping-cart"></i></button>
                     </div>
                 </div>

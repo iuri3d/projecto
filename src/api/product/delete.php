@@ -18,7 +18,9 @@ $db = $database->getConnection();
 $product = new Product($db);
   
 // get product id
+
 $data = json_decode(file_get_contents("php://input"));
+
   
 // set product id to be deleted
 $product->id = $data->id;

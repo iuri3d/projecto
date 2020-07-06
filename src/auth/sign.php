@@ -17,7 +17,10 @@
             <div class="form-body">
                 <form id="login-form" action="login.php" method="post">
                     <input type="email" placeholder="email@email.com" name="email" required>
-                    <input type="password" placeholder="Palavra-passe" name="password" required>
+                    <input type="password" class="ipassword" placeholder="Palavra-passe" name="password" required>
+                    <span class="btn-show-pass">
+					    <i class="fa fa-eye"></i>
+					</span>
                     <a href="#">Esqueceu-se da palavra-passe?</a>
                     <div class="login-button">
                         <button type="submit" value="login" class="button" id="login-btn">Entrar</button>
@@ -26,7 +29,10 @@
                 <form id="register-form" action="register.php" method="post">
                     <input type="text" placeholder="Nome" name="name" required>
                     <input type="email" placeholder="email@email.com" name="email" required>
-                    <input type="password" placeholder="Palavra-passe" name="password" required>
+                    <input type="password" class="ipassword" placeholder="Palavra-passe" name="password" required>
+                    <span class="btn-show-pass">
+					    <i class="fa fa-eye"></i>
+					</span>
                     <div class="login-button">
                         <button type="submit" class="button" id="register-btn">Registar</button>
                     </div>

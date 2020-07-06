@@ -8,7 +8,7 @@ if (!empty($_POST)) {
     $email      = $_POST['email'];
 
     if (!empty($password) && !empty($email)) {
-        $sql = "SELECT id, name, email, password, token, level FROM users WHERE email = ? AND level >= ? LIMIT 1";
+        $sql = "SELECT id, name, email, password, token, level, address, city, contact FROM users WHERE email = ? AND level >= ? LIMIT 1";
 
         $stmt = conn()->prepare($sql);
         if ($stmt->execute([$email, 0])) {
@@ -17,10 +17,7 @@ if (!empty($_POST)) {
 
             $stmt = null;
 
-            echo ($n);
-
             if ($n === 1 && password_verify($password, $r['password'])) {
-                echo('entrou no session');
                 session_start();
                 //session_regenerate_id();
 
@@ -30,9 +27,16 @@ if (!empty($_POST)) {
                 $_SESSION['email'] = $r['email'];
                 $_SESSION['token'] = $r['token'];
                 $_SESSION['level'] = $r['level'];
+                $_SESSION['address']=$r['address'];
+                $_SESSION['city']=$r['city'];
+                $_SESSION['contact']= $r['contact'];
                 
 
-                header("Location: ../index.php");
+                if($_SESSION['level'] > 1){
+                    header("Location: ../admin.php");
+                } else {
+                    header("Location: ../index.php");
+                }
             } else {
                 echo 'A autenticação falhou.';
             }

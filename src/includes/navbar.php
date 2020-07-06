@@ -18,8 +18,8 @@
                 
                     </div>
                     <div class="cart-footer">
-                        <button class="button">Apagar</button>
-                        <button class="button">Finalizar Encomenda</button>
+                        <button class="button wipe">Apagar</button>
+                        <button class="button finish">Finalizar Encomenda</button>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <div class="container admin">
-    <div class="create-product">
+    <div class="top-row">
+        <div class="create-product">
         <i class="fas fa-plus-circle"></i>
     </div>
     <div class="modal-create-product">
@@ -9,7 +10,7 @@
                     <div class="modal-close">&times</div>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="form-create-product">
+                    <form action="admin_page.php" class="form-create-product">
                         <input type="text" name="productRef" id="" placeholder="Referência">
                         <input type="text" name="productName" id="" placeholder="Nome">
                         <input type="text" name="productPrice" placeholder="Preço">
@@ -24,8 +25,11 @@
             </div>
         </div>
     </div>
+    <input type="text" placeholder="Pesquisar" >
+    </div>
+    
 
-    <input type="text" placeholder="Pesquisar" > 
+    
     <div class="product-list-table">
         <div class="list-header">
             <p class="col-m">Referência</p>
@@ -37,90 +41,7 @@
         </div>
         <div class="list-body-container">
             <ul class="list-body">
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-                <li class="list-product-item">
-                    <div class="col-m ">#26369</div>
-                    <div class="col-m ">Bolachas com Chocolate</div>
-                    <div class="col-s ">1.54€</div>
-                    <div class="col-m ">Bolachas</div>
-                    <div class="col-m item">Bolachas Chocolate com pepitas de chocolate negro e recheio de framboesa</div>
-                    <div class="col-s">25</div>
-                    <div class="col-m float">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
+                
             </ul>
         </div>
     </div>

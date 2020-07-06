@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    let user_id = '1';
+    
     ///Load products from API
     var products_arr = $.parseJSON($.ajax({
         type: 'GET',
@@ -34,21 +34,35 @@ $(document).ready(function(){
     if($('#myChart').length != 0){
         buildChart();
     }
+    ////Generate slider chart
+    if($('#slider').length != 0){
+            checkHighlight(products_arr);
+    }
+
+    if($('.rowFive').length != 0){
+        for(var i = 0; i < products_arr.records.length; i++){
+            if(products_arr.records[i].favorite != 0){
+                console.log(products_arr.records[i].name);
+                listFavorites(products_arr.records[i].name);
+            }
+        }
+    }
 
     ///Generate products on products_page
     let grid_products = $('#grid');
     if( grid_products != null && grid_products!= undefined ){
         for(var i = 0 ; i < products_arr.records.length ; i++){
-            generateProduct(i+1, products_arr.records[i].favorite, products_arr.records[i].name, products_arr.records[i].price, grid_products);
+            generateProduct(i+1, products_arr.records[i].favorite, products_arr.records[i].name, products_arr.records[i].price, grid_products, products_arr.records[i].id);
         }
     }
-    
-    ////Generate slider chart
-    if($('#slider').length != 0){
-        checkHighlight(products_arr);
+
+    ///List admin page
+
+    if($('.product-list-table').length != 0){
+        for(var i=0; i < products_arr.records.length; i++){
+            adminList(products_arr.records[i].ref,products_arr.records[i].name,products_arr.records[i].price,products_arr.records[i].category,products_arr.records[i].description,products_arr.records[i].stock);
+        }
     }
-    
-    
 
     ////Toggle Favorites
 
@@ -60,10 +74,15 @@ $(document).ready(function(){
                 }
             }
         }
+
         else{
             $('.product').show();
         }
     });
+
+    $('.add').on('click', function(){
+        console.log($(this).siblings('.prod-ref').attr('id'));
+    })
 
 
     ///Start Home Slider
@@ -117,15 +136,14 @@ $(document).ready(function(){
     ////Toggle Password Icon Dots to letters
     var showPass = 0;
     $('.btn-show-pass').on('click', function(){
-        console.log('entrou')
         if(showPass == 0) {
-            $('.form-password').attr('type','text');
+            $('.ipassword').attr('type','text');
             $(this).find('i').removeClass('fa-eye');
             $(this).find('i').addClass('fa-eye-slash');
             showPass = 1;
         }
         else {
-            $('.form-password').attr('type','password');
+            $('.ipassword').attr('type','password');
             $(this).find('i').removeClass('fa-eye-slash');
             $(this).find('i').addClass('fa-eye');
             showPass = 0;
@@ -208,13 +226,15 @@ function buildChart(){
 }
 
 //Generate Products
-function generateProduct(i, f, n, p, l){
+function generateProduct(i, f, n, p, l, id){
     /*
     i = position
     f = favourite
     n = name
     p =  price
     l = location
+
+    id=product id table
     */
 
     $(l).append('<div class="product"></div>');
@@ -228,13 +248,58 @@ function generateProduct(i, f, n, p, l){
         .append('<img class="image"/>')
         .append('<div class="productName">' + n + '</div>')
         .append('<div class="productPrice">' + p + '</div>')
+        .append('<span class="prod-ref" id="'+ id +'"></span>')
         .append('<button class="add">Adicionar <i class="fas fa-shopping-cart"></i></button>');
 }
 
 function checkHighlight(products_arr){
     for(var i = 0; i < products_arr.records.length; i++){
         if(products_arr.records[i].highlight == 1){
-            generateProduct(i+1, 1, products_arr.records[i].name, products_arr.records[i].price, '#slider')
+            generateProduct(i+1, 1,products_arr.records[i].price, products_arr.records[i].name, '#slider', products_arr.records[i].id)
         }
     }
 }
+
+function listFavorites(n){
+    //i position
+    //n = name
+
+    $('.favorites-body').append('<li class="favorites-item"></li>');
+    $('.favorites-item:last-child()')
+                        .append('<input type="checkbox">')
+                        .append('<input type="number" name="" id="favorites-item-quantity" min="0" placeholder="0">')
+                        .append('<p class="favorites-item-name">'+ n +'</p>');
+}
+
+function adminList(ref,name,price,category,desc,stock){
+    $('.list-body').append('<li class="list-product-item"></li>');
+    $('.list-product-item:last-child()')
+        .append('<div class="col-m">'+"#"+ref+'</div>')
+        .append('<div class="col-m">'+name+'</div>')
+        .append('<div class="col-s">'+price+'</div>')
+        .append('<div class="col-m">'+category+'</div>')
+        .append('<div class="col-m desc">'+desc+'</div>')
+        .append('<div class="col-s item">'+stock+'</div>')
+        .append('<div class="col-m float"></div>');
+    $('.float:last-child()')
+        .append('<i class="fas fa-pen"></i>')
+        .append('<i class="fas fa-trash"></i>')
+        
+}
+let id = {"id":"18"};
+function deleteProduct(id){
+    console.log(id);
+    $.ajax({
+        type: 'POST',
+        url: '/api/product/delete.php',
+        data: id,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json", 
+        async: false,
+        success: function(data){
+            console.log(data);
+        }  
+    }) 
+}
+deleteProduct(id);
+

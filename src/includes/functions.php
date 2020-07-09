@@ -37,8 +37,9 @@ use PHPMailer\PHPMailer\Exception;
 
 function email($to, $subject, $message, $output)
 {
-    require $_SERVER['DOCUMENT_ROOT'].'vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
     $mail = new PHPMailer(true);
+
 
     try {
         //Server settings
@@ -48,13 +49,13 @@ function email($to, $subject, $message, $output)
         $mail->SMTPAuth   = true;
         $mail->Username   = '';
         $mail->Password   = '';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
         //Recipients
-        $mail->setFrom('jorgegamito@gmail.com', 'Super App');
+        $mail->setFrom('noreply@iuripereira.pt', 'Super App');
         $mail->addAddress($to);
-        $mail->addReplyTo('no-reply@app.com', 'Information');
+        //$mail->addReplyTo('noreply@iuripereira.pt', 'Information');
 
         // Content
         $mail->isHTML(true);
@@ -63,7 +64,7 @@ function email($to, $subject, $message, $output)
         //$mail->AltBody = 'Copy-past this code somewhere: '.$token;
 
         $mail->send();
-        echo $output;
+        //echo $output;
     } catch (Exception $e) {
         echo "Mailer Error: {$mail->ErrorInfo}";
     }

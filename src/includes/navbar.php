@@ -1,9 +1,23 @@
 <nav class="navbar">
     <div class="content">
-        <div class="links">
+        <div class="links desktop">
             <a href="/" class="link">Início</a>
             <a href="/products.php" class="link">Produtos</a>
             <a href="/orders.php" class="link">Encomendas</a>
+        </div>
+
+        <div class="links mobile">
+            <div id="hambMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="menuLinks">
+                <a href="/" class="link">Início</a>
+                <a href="/products.php" class="link">Produtos</a>
+                <a href="/orders.php" class="link">Encomendas</a>
+            </div>
         </div>
         <div class="user">
             <div class="cart">

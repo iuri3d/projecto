@@ -21,10 +21,10 @@ $product = new Product($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-  
+ 
 // set product id to be deleted
 $product->id = $data->id;
-  
+
 // delete the product
 if($product->delete()){
   

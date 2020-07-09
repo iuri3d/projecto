@@ -1,27 +1,40 @@
 .container{
     padding-top: 130px;
     max-width: 1366px;
-    height: 100vh;
+    //height: 100vh;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
     justify-content: space-evenly;
 
     &.admin{
         display:block !important;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    &.products{
+        flex-direction: column;       
     }
 }
 
 .left{
-    width: 700px;
-    height: calc(100vh - 160px);
+    max-width: 700px;
+    width: 100%;
+    //height: calc(100vh - 160px);
     display: flex;
     flex-direction:column;
     justify-content:space-evenly;
+    padding: 0 15px;
+    margin-bottom: 36px;
 
     .rowOne{
         display: flex;
-        justify-content:space-between;
+        justify-content:space-between;       
+    }
+
+    .rowOne, .rowTwo, .rowThree{
+        margin-bottom: 36px;
     }
 
     .block{
@@ -82,11 +95,17 @@
 }
 
 .right{
-    width: 400px;
-    height: calc(100vh - 160px);
+    max-width: 400px;
+    width: 100%;
+    //height: calc(100vh - 160px);
     display:flex;
     flex-direction: column;
     justify-content:space-evenly;
+    padding: 0 15px;
+
+    .rowFour {
+        margin-bottom: 36px;
+    }
 
     .chart{
         width: 100%;
@@ -147,6 +166,47 @@
             align-items: center;
             justify-content: space-between;
             border-radius: 0 0 5px 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .home .container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .list-product-item div:nth-child(4),
+    .list-header p:nth-child(4){
+        display:none;
+    }
+    .col-s {
+        width: 20%!important;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .list-product-item div:nth-child(5),
+    .list-header p:nth-child(5){
+        display:none;
+    }
+    .col-m{
+        width: 20%!important;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .list-product-item div:nth-child(6),
+    .list-header p:nth-child(6){
+        display:none;
+    }
+    .col-m{
+        width: 25%!important;
+
+        i {
+            padding: 0 10px!important;
         }
     }
 }

@@ -38,6 +38,12 @@ body{
     padding: 0;
     background-color: $background-color;
     font-family: 'Open Sans', sans-serif;
+
+    &.modal-open{
+        height: 100vh;
+        overflow: hidden;
+        margin-right: 17px;
+    }
 }
 
 ul{
@@ -80,6 +86,13 @@ a{
 }
 
 
+@media screen and (max-width: 1024px){
+    body.modal-open{
+        margin-right: 0;
+    }
+}
+
+
 @import 'product';
 @import 'navbar';
 @import 'home';
@@ -87,3 +100,4 @@ a{
 @import 'modal';
 @import 'signin';
 @import 'admin';
+@import 'queries';

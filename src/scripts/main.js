@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     if($('.product-list-table').length != 0){
         for(var i=0; i < products_arr.records.length; i++){
-            adminList(products_arr.records[i].ref,products_arr.records[i].name,products_arr.records[i].price,products_arr.records[i].category,products_arr.records[i].description,products_arr.records[i].stock);
+            adminList(i+1,products_arr.records[i].ref,products_arr.records[i].name,products_arr.records[i].price,products_arr.records[i].category,products_arr.records[i].description,products_arr.records[i].stock);
         }
     }
 
@@ -91,31 +91,54 @@ $(document).ready(function(){
         slidesToShow: 3, // Shows a three slides at a time
         slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
         arrows: true, // Adds arrows to sides of slider
-        dots: true // Adds the dots on the bottom
+        dots: true, // Adds the dots on the bottom
+        responsive: [
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            },
+        ]
     });
 
     ///Open orders modal
     $('.orders').on('click', function(){
         $('.modal').css('display','block');
+        $('body').addClass('modal-open');
     });
     $('.upcomingOrders').on('click', function(){
         $('.modal').css('display','block');
+        $('body').addClass('modal-open');
     });
     ///Close Modal
     $('.modal-close').on('click', function(){
         $('.modal').css('display','none');
+        $('body').removeClass('modal-open');
     });
 
     ///Open create product modal
     $('.create-product').on('click',function(){
-        $('.modal').css('display','block');
+        $('.modal').css('display','flex');
+        $('body').addClass('modal-open');
     })
 
     //Show Profile Options
-    $('.profile').on('click',function(){showProfile()});
+    $('.profile').on('click',function(){
+        if( $('.cart-body').hasClass("show") ){
+            $('.cart-body').removeClass("show");
+        }
+        showProfile();
+    });
 
     ///Show cart modal
-    $('.icon').on('click',function(){showCart()});
+    $('.icon').on('click',function(){
+        if($('.user-settings').hasClass('show')){
+            $('.user-settings').removeClass('show');
+        }
+        showCart()
+    });
 
     ///Close cart modal
     $('#cart-close').on('click',function(){
@@ -150,6 +173,25 @@ $(document).ready(function(){
         }
     });
 
+    //delete admin page
+    $('.list-product-item .del').on('click', function(){
+        var id = $(this).parent().siblings('.identifier').attr("value");
+        $('.delete').attr('value', id);
+        $('.verify-modal').addClass('active');
+    });
+
+    $('.delete').on('click', function(){
+        var id = $(this).attr('value');
+        console.log(id);
+        deleteProduct(id);
+        $('.verify-modal').removeClass('active');
+        //location.reload();
+    });
+
+    $('.cancel').on('click', function(){
+        $('.verify-modal').removeClass('active');
+    })
+
     ///Login Register Page - Switch form
     $(function() {
 
@@ -167,10 +209,28 @@ $(document).ready(function(){
             $(this).addClass('active');
             e.preventDefault();
         });
+    });
     
-    });    
+    $('.create-button').on('click', function(){
+        let ref = $(this).siblings('#productRef').val();
+        let name = $(this).siblings('#productName').val();
+        let price = $(this).siblings('#productPrice').val();
+        let stock = $(this).siblings('#productStock').val();
+        let highlight = 1;//$(this).siblings('#productHighlight').val();
+        let category = $(this).siblings('#productCategory').val();
+        let description = $(this).siblings('#productDescription').val();
+
+        createProduct(ref, name, price, stock, highlight, category, description);
+        //createProduct(ref, name, price, stock, highlight, category, description);
+        
+    })
 });
 
+
+/* MENU MOBILE */
+$('#hambMenu').on('click', function() {
+    $('#menuLinks').toggleClass('show');
+});
 
 
 
@@ -271,35 +331,53 @@ function listFavorites(n){
                         .append('<p class="favorites-item-name">'+ n +'</p>');
 }
 
-function adminList(ref,name,price,category,desc,stock){
+function adminList(i,ref,name,price,category,desc,stock){
+
     $('.list-body').append('<li class="list-product-item"></li>');
-    $('.list-product-item:last-child()')
-        .append('<div class="col-m">'+"#"+ref+'</div>')
+    $('.list-product-item:nth-child('+i+')')
+        .append('<div class="col-m identifier" value="'+ref+'">'+ref+'</div>')
         .append('<div class="col-m">'+name+'</div>')
         .append('<div class="col-s">'+price+'</div>')
         .append('<div class="col-m">'+category+'</div>')
         .append('<div class="col-m desc">'+desc+'</div>')
-        .append('<div class="col-s item">'+stock+'</div>')
+        .append('<div class="col-m item">'+stock+'</div>')
         .append('<div class="col-m float"></div>');
-    $('.float:last-child()')
-        .append('<i class="fas fa-pen"></i>')
-        .append('<i class="fas fa-trash"></i>')
+    $('.list-product-item:nth-child('+i+') .float')
+        .append('<i class="fas fa-pen change"></i>')
+        .append('<i class="fas fa-trash del"></i>');
         
 }
-let id = {"id":"18"};
+
 function deleteProduct(id){
-    console.log(id);
+    let data = JSON.stringify({"id":id});
+    console.log(data);
     $.ajax({
         type: 'POST',
         url: '/api/product/delete.php',
-        data: id,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json", 
+        data: data,
         async: false,
         success: function(data){
             console.log(data);
         }  
-    }) 
+    })
 }
-deleteProduct(id);
+
+function createProduct(ref, name, price, stock, highlight, category, description){
+
+    let data = JSON.stringify({"ref":ref, "name":name, "price":price, "stock":stock, "highlight":highlight, "category":category, "description":description})
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/product/create.php',
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json", 
+        async: false,
+        success: function(data){
+            console.log('sucesso');
+        }  
+    })
+
+}
+
 

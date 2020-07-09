@@ -21,7 +21,7 @@ require_once('../includes/functions.php');
       if ($stmt->execute([1, $email, $token])) {
           $stmt = null;
 
-          $dir = 'users/'.$token;
+          $dir = '../users/'.$token;
           if (!file_exists($dir)) {
               mkdir($dir, 0777, true);
           }

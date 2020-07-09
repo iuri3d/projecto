@@ -1,5 +1,14 @@
 .top-row{
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    input.page {
+        height: 30px;
+        width: 300px;
+        border: none;
+        padding: 5px 10px;
+    }
 }
 
 .create-product{
@@ -8,32 +17,38 @@
     justify-content:center;
     width: 50px;
     height: 50px;
+    cursor: pointer;
 
     i{
-        font-size: 35px;
+        font-size: 20px;
+        color: #ffffff;
     }
 }
 .product-list-table{
     background-color:$searchBar;
     border-radius: 5px;
     overflow: hidden;
+    border-radius: 0;
+    margin-bottom: 36px;
 }
 
 .list-header{
-    background-color:$product-background;
-    height: 30px;
+    background-color:#BDC3C7;
+    min-height: 30px;
+    padding: 10px 0;
     display:flex;
     align-items:center;
+
     p{
         font-size: $text14;
         margin: 0;
         text-align: center;
+        font-weight: 600;
     }
 }
 
 .col-m{
-    width:150px;
-    max-width:150px;
+    width:15%;
     overflow: hidden;
 
     i{
@@ -43,6 +58,10 @@
     &.float{
         display:flex;
         justify-content:flex-end;
+
+        i{
+            cursor: pointer;
+        }
     }
 
     &.desc{
@@ -53,27 +72,60 @@
 }
 
 .col-s{
-    width: 80px;
+    width: 5%;
 }
 
 .list-body{
 
     li:nth-child(even){
-        background-color:$product-background;
+        background-color:#bdc3c7;
+    }
+
+    li:nth-child(odd){
+        background-color:#ECF0F1;
     }
 
 }
 .list-product-item{
     display:flex;
     font-size:$text12;
-    height: 25px;
+    min-height: 25px;
     display:flex;
     align-items:center;
     text-align:center;
+    padding: 10px 0;
 
     .item{
         max-height: 17px;
         white-space: nowrap;
         text-overflow: ellipsis;
+    }
+}
+
+.verify-modal{
+    display:none;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px 25px;
+    border-radius: 5px;
+    width: 350px;
+    height: 150px;
+    background-color: $product-background;
+    box-shadow: 7px 7px 10px 0 rgba(0,0,0,.75);
+
+    &.active{
+        display: flex;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+
+    }
+
+    button{
+        width: 100px;
+        height: 30px;
+        margin: 0 10px;
     }
 }

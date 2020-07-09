@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container products">
     <div class="searchBar">
         <input type="text" class="search" placeholder="Pesquisar">
         <div class="filter-favorites">
